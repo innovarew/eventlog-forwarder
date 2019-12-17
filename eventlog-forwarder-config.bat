@@ -29,6 +29,11 @@
 :: 14/04/2013        innovare.solutions
 :: v1.4 Support forwarding regular application log files.
 ::
+:: 13/12/2013        innovarew.solutions
+:: v1.5 Release stable version
+::
+:: 17/12/2013        innovarew.solutions
+:: v1.6 Add forward command
 
 :: IMPORTANT Remember to add the correspnding TLS certificate to the store with
 :: certutil -addstore -enterprise -f "Root" /path/to/certificate/file
@@ -50,7 +55,7 @@ set logcycle=7
 :: forward logs from today (send logs from 1 day back from today)
 set logrange=1
 
-:: Last, forward the different Event and App Logs to the Syslog Server
-%eventlogfwd% %server% %protocol% %port% "EventLog" "Security" %logcycle% %logrange%
-%eventlogfwd% %server% %protocol% %port% "AppLog" "/path/to/app.log" %logcycle% %logrange%
-
+:: Next, forward the EventLogs to the Syslog Server
+%eventlogfwd% forwarder %server% %protocol% %port% "EventLog" "Security" %logcycle% %logrange%
+:: And, forward also the App Logs to the Syslog Server
+%eventlogfwd% forwarder %server% %protocol% %port% "AppLog" "/path/to/app.log" %logcycle% %logrange%
