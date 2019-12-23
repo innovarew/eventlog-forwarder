@@ -33,7 +33,11 @@
 :: v1.5 Release stable version
 ::
 :: 17/12/2013        innovarew.solutions
-:: v1.6 Add forward command
+:: v1.6 Add forwarder command
+::
+:: 18/12/2013        innovarew.solutions
+:: v1.7 Add firewall and antivirus logs (pfirewall.log & co.) TBD
+::
 
 :: IMPORTANT Remember to add the correspnding TLS certificate to the store with
 :: certutil -addstore -enterprise -f "Root" /path/to/certificate/file
@@ -59,3 +63,6 @@ set logrange=1
 %eventlogfwd% forwarder %server% %protocol% %port% "EventLog" "Security" %logcycle% %logrange%
 :: And, forward also the App Logs to the Syslog Server
 %eventlogfwd% forwarder %server% %protocol% %port% "AppLog" "/path/to/app.log" %logcycle% %logrange%
+:: And, forward also the firewall Logs to the Syslog Server
+%eventlogfwd% forwarder %server% %protocol% %port% "AppLog" %windir%\system32\logfiles\firewall\pfirewall. log %logcycle% %logrange%
+
