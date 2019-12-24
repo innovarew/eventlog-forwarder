@@ -64,5 +64,5 @@ set logrange=1
 :: And, forward also the App Logs to the Syslog Server
 %eventlogfwd% forwarder %server% %protocol% %port% "AppLog" "/path/to/app.log" %logcycle% %logrange%
 :: And, forward also the firewall Logs to the Syslog Server
-%eventlogfwd% forwarder %server% %protocol% %port% "AppLog" %windir%\system32\logfiles\firewall\pfirewall. log %logcycle% %logrange%
+%eventlogfwd% forwarder %server% %protocol% %port% "AppLog" %windir%\system32\logfiles\firewall\pfirewall.log %logcycle% %logrange%
 
